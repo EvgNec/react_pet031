@@ -8,11 +8,6 @@ export class App extends Component {
   state = {
     selectVideo: null,
   };
-  componentDidMount() {
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    }
 
   selectVideo = link => {
     this.setState({ selectVideo: link });

@@ -16,8 +16,7 @@ export class Player extends Component {
     const { url } = this.props;
     const { isVideoLoaded } = this.state;
     const showLoader = url && !isVideoLoaded;
-    const playerWidth = isVideoLoaded ? '100%' : 0;
-    const playerHeight = isVideoLoaded ? '100%' : 0;
+    const playerSize = isVideoLoaded ? '100%' : 0;
     return (
       <>
         {showLoader && <h2>Load video</h2>}
@@ -25,8 +24,8 @@ export class Player extends Component {
           <PlayerWraper>
             <StyledPlayer
               url={url}
-              width={playerWidth}
-              height={playerHeight}
+              width={playerSize}
+              height={playerSize}
               onReady={() => this.setState({ isVideoLoaded: true })}
               controls
             />
