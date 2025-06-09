@@ -6,7 +6,6 @@ import videos from './videos.json';
 
 export class App extends Component {
   state = {
-    showModal: false,
     selectVideo: null,
   };
   componentDidMount() {

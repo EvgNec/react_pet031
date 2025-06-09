@@ -1,20 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { PlayerWraper, StyledPlayer } from './player.styled';
 
 export class Player extends Component {
+  state = {
+    isVideoLoaded: false,
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.url !== this.props.url) {
+      this.setState({ isVideoLoaded: false });
+    }
+  }
+
   render() {
-    const {url} = this.props;
+    const { url } = this.props;
+    const { isVideoLoaded } = this.state;
+    const showLoader = url && !isVideoLoaded;
+    const playerWidth = isVideoLoaded ? '100%' : 0;
+    const playerHeight = isVideoLoaded ? '100%' : 0;
     return (
       <>
-      {url && (
-        <PlayerWraper>
-            <StyledPlayer url={url} controls/>
-        </PlayerWraper>
-      )}
-        
+        {showLoader && <h2>Load video</h2>}
+        {url && (
+          <PlayerWraper>
+            <StyledPlayer
+              url={url}
+              width={playerWidth}
+              height={playerHeight}
+              onReady={() => this.setState({ isVideoLoaded: true })}
+              controls
+            />
+          </PlayerWraper>
+        )}
       </>
-    )
+    );
   }
 }
 
-export default Player
+export default Player;
