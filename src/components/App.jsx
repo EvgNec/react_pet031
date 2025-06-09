@@ -1,49 +1,36 @@
-import React, { Component } from 'react'
-import Container from './Container'
-import Modal from './Modal';
+import React, { Component } from 'react';
+import Container from './Container';
+import { Player } from './Player/Player';
+import VideoList from './VideoList/VideoList';
+import videos from './videos.json';
 
 export class App extends Component {
   state = {
     showModal: false,
+    selectVideo: null,
   };
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const nextContacts = this.state.contacts;
-    const prevContacts = prevState.contacts;
- if (nextContacts !== prevContacts) {
-      console.log('Обновилось поле contacts, записываю contacts в хранилище');
-      localStorage.setItem('contacts', JSON.stringify(nextContacts ));
     }
 
-    if (nextContacts.length > prevContacts.length && prevContacts.length !== 0) {
-      this.toggleModal();
-    }
-  }
-
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
+  selectVideo = link => {
+    this.setState({ selectVideo: link });
   };
+
   render() {
-    const { showModal } = this.state;
+    const { selectVideo } = this.state;
     return (
-      <Container>
-                {showModal && (
-          <Modal onClose={this.toggleModal}>
-            Children
-          </Modal>
-        )}
-      </Container>
-    )
+      <>
+        <Container>
+          <h1> Select video: {selectVideo}</h1>
+          <VideoList videos={videos} onSelect={this.selectVideo} />
+          <Player url={selectVideo}/>
+        </Container>
+      </>
+    );
   }
 }
 
-export default App
+export default App;
