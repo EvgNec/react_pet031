@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import Container from './Container'
-import contacts from './contacts.json'
 import Modal from './Modal';
 
 export class App extends Component {
   state = {
-    contacts: contacts,
-    showModal: true,
+    showModal: false,
   };
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
@@ -35,7 +33,7 @@ export class App extends Component {
     }));
   };
   render() {
-    const { contacts, showModal } = this.state;
+    const { showModal } = this.state;
     return (
       <Container>
                 {showModal && (
