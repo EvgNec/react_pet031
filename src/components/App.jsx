@@ -24,11 +24,11 @@ export class App extends Component {
 </Container>
 
 
-        {/* <Container>
+        <Container>
           <h1> Select video: {selectVideo}</h1>
           <VideoList videos={videos} onSelect={this.selectVideo} />
           <Player url={selectVideo}/>
-        </Container> */}
+        </Container>
       </>
     );
   }
