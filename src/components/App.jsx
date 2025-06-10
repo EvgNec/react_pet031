@@ -3,6 +3,8 @@ import Container from './Container';
 import { Player } from './Player/Player';
 import VideoList from './VideoList/VideoList';
 import videos from './videos.json';
+import Reader from './Reader/Reader';
+import news from './publication.json';
 
 export class App extends Component {
   state = {
@@ -17,11 +19,16 @@ export class App extends Component {
     const { selectVideo } = this.state;
     return (
       <>
-        <Container>
+<Container>
+  <Reader news={news}/>
+</Container>
+
+
+        {/* <Container>
           <h1> Select video: {selectVideo}</h1>
           <VideoList videos={videos} onSelect={this.selectVideo} />
           <Player url={selectVideo}/>
-        </Container>
+        </Container> */}
       </>
     );
   }
