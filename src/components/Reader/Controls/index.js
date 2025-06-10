@@ -1,1 +1,1 @@
-import {default} from './Controls.jsx'
+export { default } from './Controls';

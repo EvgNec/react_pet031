@@ -1,1 +1,1 @@
-import {default} from './Publication.jsx'
+export {default} from './Publication.jsx'
