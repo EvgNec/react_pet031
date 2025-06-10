@@ -1,4 +1,7 @@
+import Controls from 'components/Reader/Controls/Controls';
 import React, { Component } from 'react';
+import Progress from './Progress/Progress';
+import Publication from './Publication/Publication';
 
 export class Reader extends Component {
   state = {
@@ -23,28 +26,14 @@ export class Reader extends Component {
     const { index } = this.state;
     return (
       <div>
-        <section>
-          <button 
-          type="button" 
-          disabled={index === 0}
-          onClick={() => this.changeIndex(-1)}>
-            Next
-          </button>
-          <button 
-          type="button" 
-          disabled={index === totalNews-1}
-          onClick={() => this.changeIndex(1)}>
-            Preview
-          </button>
-        </section>
-        <p>
-          {index + 1}/{totalNews}
-        </p>
-
-        <article key={currentItem.id}>
-          <h2>{currentItem.title}</h2>
-          <p>{currentItem.text}</p>
-        </article>
+<Controls 
+onChange={this.changeIndex}
+currentNews={index+1}
+totalNews={totalNews}/>
+<Progress
+currentNews={index+1}
+totalNews={totalNews}/>
+<Publication news={currentItem}/>
       </div>
     );
   }
