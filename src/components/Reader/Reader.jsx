@@ -26,14 +26,13 @@ export class Reader extends Component {
     const { index } = this.state;
     return (
       <div>
-<Controls 
-onChange={this.changeIndex}
-currentNews={index+1}
-totalNews={totalNews}/>
-<Progress
-currentNews={index+1}
-totalNews={totalNews}/>
-<Publication news={currentItem}/>
+        <Controls
+          onChange={this.changeIndex}
+          currentNews={index + 1}
+          totalNews={totalNews}
+        />
+        <Progress currentNews={index + 1} totalNews={totalNews} />
+        <Publication news={currentItem} />
       </div>
     );
   }

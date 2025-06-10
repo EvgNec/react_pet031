@@ -1,12 +1,11 @@
-import React from 'react'
-function Publication({id, title, text}) {
+import React from 'react';
+function Publication({ news }) {
   return (
-              <article key={id}>
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </article>
-
-  )
+    <article>
+      <h2>{news.title}</h2>
+      <p>{news.text}</p>
+    </article>
+  );
 }
 
-export default Publication
+export default Publication;
